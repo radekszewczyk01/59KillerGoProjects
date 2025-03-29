@@ -21,7 +21,7 @@ To run any project:
 ```sh
 # Clone this repository
 git clone https://github.com/radekszewczyk01/59KillerGoProjects?tab=readme-ov-file
-cd 59-killer-go-projects
+cd 59KillerGoProjects
 
 # Run a specific project
 go run project-folder/main.go
