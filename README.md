@@ -10,7 +10,7 @@ This repository serves as a personal learning journey through various Go project
 ## 🔥 Projects Implemented
 A list of completed and in-progress projects:
 - [ ] Project 1: **Web Server in GO** - with implementation of a simple Form
-- [ ] Project 2: **Crud API in GO**
+- [ ] Project 2: **CRUD API in GO**
 - [ ] ...
 
 ## 💡 Credits
@@ -20,7 +20,7 @@ All project ideas come from the **"59 Killer Go Projects"** series by **[@AkhilS
 To run any project:
 ```sh
 # Clone this repository
-git clone https://github.com/YOUR_USERNAME/59-killer-go-projects.git
+git clone https://github.com/radekszewczyk01/59KillerGoProjects?tab=readme-ov-file
 cd 59-killer-go-projects
 
 # Run a specific project
