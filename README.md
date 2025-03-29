@@ -10,7 +10,7 @@ This repository serves as a personal learning journey through various Go project
 ## 🔥 Projects Implemented
 A list of completed and in-progress projects:
 - [ ] Project 1: **Web Server in GO** - with implementation of a simple Form
-- [ ] Project 2: **CRUD API in GO**
+- [ ] Project 2: **CRUD API in GO** - handling differen HTTP requests
 - [ ] ...
 
 ## 💡 Credits
