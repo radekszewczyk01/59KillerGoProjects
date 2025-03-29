@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "isbn": "123-456-789",
+    "title": "Inception",
+    "director": {
+      "first_name": "Christopher",
+      "last_name": "Nolan"
+    }
+  },
+  {
+    "id": "2",
+    "isbn": "987-654-321",
+    "title": "The Dark Knight",
+    "director": {
+      "first_name": "Christopher",
+      "last_name": "Nolan"
+    }
+  },
+  {
+    "id": "3",
+    "isbn": "555-123-456",
+    "title": "Interstellar",
+    "director": {
+      "first_name": "Christopher",
+      "last_name": "Nolan"
+    }
+  }
+]
