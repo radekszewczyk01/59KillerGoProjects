@@ -65,6 +65,9 @@ func CreateMovie(w http.ResponseWriter, r *http.Request, movies *[]models.Movie)
 	_ = json.NewDecoder(r.Body).Decode(&movie)
 	movie.ID = strconv.Itoa(rand.Intn(1000000))
 	*movies = append(*movies, movie)
+
+	SaveDataToFile("data.json", *movies)
+
 	json.NewEncoder(w).Encode(movie)
 }
 
@@ -82,4 +85,20 @@ func UpdateMovie(w http.ResponseWriter, r *http.Request, movies *[]models.Movie)
 			return
 		}
 	}
+}
+
+func SaveDataToFile(filename string, movies []models.Movie) {
+	jsonData, err := json.MarshalIndent(movies, "", "  ")
+	if err != nil {
+		fmt.Println("Error encoding JSON:", err)
+		return
+	}
+
+	err = os.WriteFile(filename, jsonData, 0644)
+	if err != nil {
+		fmt.Println("Error writing file:", err)
+		return
+	}
+
+	fmt.Println("Data successfully written to", filename)
 }

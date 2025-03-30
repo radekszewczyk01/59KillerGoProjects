@@ -25,5 +25,14 @@
       "first_name": "Christopher",
       "last_name": "Nolan"
     }
+  },
+  {
+    "id": "502362",
+    "isbn": "333-444-555",
+    "title": "The Matrix",
+    "director": {
+      "first_name": "Lana",
+      "last_name": "Wachowski"
+    }
   }
 ]
