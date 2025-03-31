@@ -1,4 +1,5 @@
-module 03_GoAndMySQL
+module github.com/radekszewczyk01/59KillerGoProjects/03_GoAndMySQL
+
 
 go 1.23
 
