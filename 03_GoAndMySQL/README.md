@@ -1,68 +1,68 @@
-# **Projekt: Go & MySQL - System do zarządzania książkami**
+# **Project: Go & MySQL - Book Management System**
 
-### Opis projektu
-Ten projekt w języku Go umożliwia zarządzanie książkami w bazie danych MySQL. Aplikacja łączy się z bazą danych, pozwala na tworzenie, usuwanie i przeglądanie książek poprzez wysyłanie zapytań HTTP do lokalnego serwera. Projekt obsługuje CRUD (Create, Read, Update, Delete) dla rekordów w tabeli `books`.
+### Project Description
+This project, written in Go, allows managing books in a MySQL database. The application connects to the database and enables creating, deleting, and viewing books by sending HTTP requests to a local server. The project supports full CRUD (Create, Read, Update, Delete) operations for records in the `books` table.
 
-### Technologie:
-- **Go** - język programowania wykorzystywany do tworzenia aplikacji.
-- **MySQL** - baza danych, w której przechowywane są informacje o książkach.
-- **GORM** - ORM (Object Relational Mapping) dla Go, ułatwiający interakcję z bazą danych.
-- **HTTP** - serwer, który umożliwia komunikację z aplikacją za pomocą zapytań HTTP.
+### Technologies:
+- **Go** - The programming language used to develop the application.
+- **MySQL** - The database used to store book information.
+- **GORM** - An ORM (Object Relational Mapping) for Go, simplifying database interactions.
+- **HTTP** - A server that enables communication with the application through HTTP requests.
   
-### Funkcje:
-- **POST**: Dodawanie nowych książek do bazy danych.
-- **DELETE**: Usuwanie książek z bazy danych po identyfikatorze.
+### Features:
+- **POST**: Adds new books to the database.
+- **DELETE**: Removes books from the database by ID.
 
-### Jak to działa?
+### How It Works?
 
-1. **Połączenie z bazą danych**: 
-   Projekt łączy się z bazą MySQL przy pomocy GORM-a. Dane o książkach są przechowywane w tabeli `books`, która zawiera następujące kolumny:
-   - `id` (AUTO_INCREMENT, Primary Key) – unikalny identyfikator książki.
-   - `name` – nazwa książki.
-   - `author` – autor książki.
-   - `publication` – wydawnictwo książki.
-   - `created_at`, `updated_at` – daty utworzenia i modyfikacji rekordu.
-   - `deleted_at` – data usunięcia (jeśli książka została usunięta, używamy tzw. twardego usuwania).
+1. **Database Connection**:
+   The project connects to a MySQL database using GORM. Book data is stored in the `books` table, which includes the following columns:
+   - `id` (AUTO_INCREMENT, Primary Key) – Unique book identifier.
+   - `name` – Name of the book.
+   - `author` – Author of the book.
+   - `publication` – Publisher of the book.
+   - `created_at`, `updated_at` – Timestamps for record creation and modification.
+   - `deleted_at` – Timestamp for deletion (soft delete is used).
 
-2. **Wysyłanie żądań do aplikacji**: 
-   Aplikacja nasłuchuje na porcie `9010` i obsługuje zapytania HTTP. Przykładowo, możesz dodać książki za pomocą `POST` i usunąć je za pomocą `DELETE`.
+2. **Sending Requests to the Application**:
+   The application listens on port `9010` and handles HTTP requests. For example, you can add books using `POST` and delete them using `DELETE`.
 
 ---
 
-### Instalacja
+### Installation
 
-1. **Zainstaluj MySQL**:
-   Upewnij się, że masz zainstalowaną bazę danych MySQL oraz że masz dostęp do niej na porcie 3306.
+1. **Install MySQL**:
+   Ensure you have MySQL installed and running on port 3306.
 
-2. **Zainstaluj Go**:
-   Pobierz i zainstaluj Go: https://golang.org/dl/
+2. **Install Go**:
+   Download and install Go from: https://golang.org/dl/
 
-3. **Stwórz bazę danych**:
-   Utwórz bazę danych o nazwie `simplerest` w MySQL:
+3. **Create the Database**:
+   Create a MySQL database named `simplerest`:
    ```sql
    CREATE DATABASE simplerest;
    ```
 
-4. **Zainstaluj zależności Go**:
-   Zainstaluj wymagane pakiety przy użyciu polecenia:
+4. **Install Go Dependencies**:
+   Install required packages using:
    ```bash
    go mod tidy
    ```
 
-5. **Uruchom aplikację**:
-   Aby uruchomić aplikację Go, użyj poniższego polecenia:
+5. **Run the Application**:
+   Start the Go application using:
    ```bash
    go run main.go
    ```
 
-### Przykład użycia API
+### API Usage Examples
 
-Po uruchomieniu aplikacji, API będzie dostępne na `http://localhost:9010/`.
+Once the application is running, the API will be available at `http://localhost:9010/`.
 
-1. **Dodanie książki**:
-   Aby dodać książkę do bazy, wyślij żądanie `POST` na endpoint `http://localhost:9010/book/` z danymi książki:
+1. **Adding a Book**:
+   To add a book to the database, send a `POST` request to `http://localhost:9010/book/` with book details:
 
-   **Przykładowe zapytanie w JavaScript (fetch):**
+   **Example JavaScript (fetch) request:**
 
    ```javascript
    fetch("http://localhost:9010/book/", {
@@ -78,10 +78,10 @@ Po uruchomieniu aplikacji, API będzie dostępne na `http://localhost:9010/`.
    })
    .then(response => response.json())
    .then(data => console.log(data))
-   .catch(error => console.error("Błąd:", error));
+   .catch(error => console.error("Error:", error));
    ```
 
-   **Inny przykład książki:**
+   **Another Example:**
 
    ```javascript
    fetch("http://localhost:9010/book/", {
@@ -90,17 +90,17 @@ Po uruchomieniu aplikacji, API będzie dostępne na `http://localhost:9010/`.
            "Content-Type": "application/json"
        },
        body: JSON.stringify({
-           "Name": "Wiedźmin",
+           "Name": "The Witcher",
            "Author": "Andrzej Sapkowski",
            "Publication": "SuperNOWA"
        })
    })
    .then(response => response.json())
    .then(data => console.log(data))
-   .catch(error => console.error("Błąd:", error));
+   .catch(error => console.error("Error:", error));
    ```
 
-   **Oczekiwana odpowiedź JSON:**
+   **Expected JSON Response:**
 
    ```json
    {
@@ -114,10 +114,10 @@ Po uruchomieniu aplikacji, API będzie dostępne na `http://localhost:9010/`.
    }
    ```
 
-2. **Usuwanie książki**:
-   Aby usunąć książkę z bazy, wyślij zapytanie `DELETE` na endpoint `http://localhost:9010/book/{id}`.
+2. **Deleting a Book**:
+   To delete a book from the database, send a `DELETE` request to `http://localhost:9010/book/{id}`.
 
-   **Przykładowe zapytanie w JavaScript:**
+   **Example JavaScript request:**
 
    ```javascript
    fetch('http://localhost:9010/book/1', {
@@ -125,46 +125,46 @@ Po uruchomieniu aplikacji, API będzie dostępne na `http://localhost:9010/`.
    })
    .then(response => {
      if (response.ok) {
-       console.log('Książka została usunięta');
+       console.log('Book deleted successfully');
      } else {
-       console.log('Błąd przy usuwaniu książki');
+       console.log('Error deleting the book');
      }
    })
-   .catch(error => console.error('Błąd: ', error));
+   .catch(error => console.error('Error:', error));
    ```
 
-   **Oczekiwana odpowiedź:**
+   **Expected Response:**
 
    ```json
    {
-       "message": "Książka została usunięta"
+       "message": "Book has been deleted"
    }
    ```
 
 ---
 
-### Przykład stanu tabeli po dodaniu książek:
+### Example Table State After Adding Books:
 
-Po wykonaniu zapytania `SELECT * FROM books;`, możesz zobaczyć w tabeli dane o książkach, takie jak:
+After running `SELECT * FROM books;`, you should see the following records:
 
 ```sql
 +----+-------------------+-------------------+-------------+---------------------+---------------------+------------+
 | id | name              | author            | publication | created_at          | updated_at          | deleted_at |
 +----+-------------------+-------------------+-------------+---------------------+---------------------+------------+
 | 10 | Lord of The Rings | J.R.R. Tolkien    | XYZ         | 2025-03-31 22:16:27 | 2025-03-31 22:16:27 | NULL       |
-| 11 | Wiedźmin          | Andrzej Sapkowski | SuperNOWA   | 2025-03-31 22:16:52 | 2025-03-31 22:16:52 | NULL       |
+| 11 | The Witcher       | Andrzej Sapkowski | SuperNOWA   | 2025-03-31 22:16:52 | 2025-03-31 22:16:52 | NULL       |
 +----+-------------------+-------------------+-------------+---------------------+---------------------+------------+
 ```
 
 ---
 
-### Uwagi:
-- Projekt korzysta z **soft delete** w GORM, co oznacza, że rekordy są "usuwane" tylko przez ustawienie pola `deleted_at`, zamiast usuwania ich fizycznie z bazy.
-- Każda książka ma pole `created_at` oraz `updated_at`, które są automatycznie ustawiane przez GORM.
+### Notes:
+- The project uses **soft delete** in GORM, meaning records are "deleted" by setting the `deleted_at` field instead of being physically removed from the database.
+- Each book record includes `created_at` and `updated_at` fields, which are automatically managed by GORM.
 
 ---
 
-### Licencja
+### License
 
-Projekt jest udostępniony na licencji MIT.
+This project is released under the MIT License.
 
