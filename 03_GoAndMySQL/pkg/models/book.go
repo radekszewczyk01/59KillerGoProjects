@@ -9,7 +9,7 @@ var db *gorm.DB
 
 type Book struct {
 	gorm.Model
-	Name        string `gorm:""json:"name"`
+	Name        string `json:"name"`
 	Author      string `json:"author"`
 	Publication string `json:"publication"`
 }
@@ -21,10 +21,12 @@ func init() {
 }
 
 func (b *Book) CreateBook() *Book {
-	db.NewRecord(b)
-	db.Create(&b)
+	if err := db.Create(&b).Error; err != nil {
+		return nil
+	}
 	return b
 }
+
 
 func GetAllBooks() []Book {
 	var Books []Book

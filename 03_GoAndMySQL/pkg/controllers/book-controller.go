@@ -37,11 +37,17 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 func CreateBook(w http.ResponseWriter, r *http.Request) {
 	CreateBook := &models.Book{}
 	utils.ParseBody(r, CreateBook)
+
+	// Logowanie po parsowaniu
+	fmt.Println("Parsowanie zakończone. Dane książki:")
+	fmt.Printf("Name: %s, Author: %s, Publication: %s\n", CreateBook.Name, CreateBook.Author, CreateBook.Publication)
+
 	b := *CreateBook.CreateBook()
 	res, _ := json.Marshal(b)
 	w.WriteHeader(http.StatusCreated)
 	w.Write(res)
 }
+
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
